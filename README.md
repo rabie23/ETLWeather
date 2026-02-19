@@ -4,7 +4,7 @@ Hier ist die professionelle, deutsche README für dein GitHub-Repository, die ge
 
 ---
 
-# 🌦️ Weather ETL Pipeline
+# 🌦️  ETL Pipeline
 
 Dieses Projekt ist eine automatisierte **ETL-Pipeline** (Extract, Transform, Load), die mit **Apache Airflow** und der **Astro CLI** realisiert wurde. Es ruft Echtzeit-Wetterdaten ab, bereitet sie auf und speichert sie in einer PostgreSQL-Datenbank.
 
