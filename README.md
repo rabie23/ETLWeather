@@ -4,7 +4,7 @@ Hier ist die professionelle, deutsche README für dein GitHub-Repository, die ge
 
 ---
 
-# 🌦️ Berlin Weather ETL Pipeline
+# 🌦️ Weather ETL Pipeline
 
 Dieses Projekt ist eine automatisierte **ETL-Pipeline** (Extract, Transform, Load), die mit **Apache Airflow** und der **Astro CLI** realisiert wurde. Es ruft Echtzeit-Wetterdaten ab, bereitet sie auf und speichert sie in einer PostgreSQL-Datenbank.
 
@@ -60,18 +60,9 @@ SELECT * FROM weather_data;
 ---
 <img width="1907" height="853" alt="image" src="https://github.com/user-attachments/assets/244cd098-bab1-43e2-8c1d-7c2086117000" />
 
+<img width="1506" height="960" alt="image" src="https://github.com/user-attachments/assets/3b792346-f19e-4f4f-b38e-d0d69420e998" />
 
-## 👤 Kontakt & Autor
+<img width="1520" height="861" alt="image" src="https://github.com/user-attachments/assets/fcafdf35-0de8-47ed-a395-2b89a6c0b012" />
 
-**Rabie**
-GitHub: [github.com/rabie23](https://github.com/rabie23)
 
----
 
-### Was du jetzt tun kannst:
-
-1. Erstelle die Datei `README.md` in deinem VS Code Ordner.
-2. Kopiere diesen Text hinein.
-3. Führe die `git`-Befehle von vorhin aus, um alles auf GitHub zu laden.
-
-Soll ich dir noch helfen, einen kleinen "Azure"-Abschnitt hinzuzufügen, falls du planst, die DB später in dein Azure-Konto zu verschieben?
