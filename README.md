@@ -1,60 +1,64 @@
-Das ist ein fantastischer Abschluss! Im Screenshot von **DBeaver** sieht man ganz deutlich die Tabelle `weather_data` mit echten Werten für Temperatur (8,9 und 8,6 Grad), Windgeschwindigkeit und Zeitstempel. Damit ist der Beweis erbracht: Deine ETL-Pipeline funktioniert von der API bis in die Datenbank einwandfrei.
+🚀 Multi-Source ETL Portfolio: Weather & Uber Data
+Dieses Repository enthält zwei vollautomatisierte ETL-Pipelines, die mit Apache Airflow und der Astro CLI realisiert wurden. Es demonstriert den Umgang mit unterschiedlichen Datenquellen (REST-API und lokale CSV-Dateien) sowie deren Speicherung in einer PostgreSQL-Datenbank.
 
-Hier ist die professionelle, deutsche README für dein GitHub-Repository, die genau auf dein fertiges Projekt zugeschnitten ist:
+📈 Projekt-Übersicht
+Das Repository besteht aus zwei Haupt-Workflows (DAGs):
 
----
+1. 🌦️ Berlin Weather Pipeline (API-to-DB)
+Quelle: Echtzeit-Wetterdaten der Open-Meteo API.
 
-# 🌦️  ETL Pipeline
+Fokus: Handling von HTTP-Requests und JSON-Transformationen.
 
-Dieses Projekt ist eine automatisierte **ETL-Pipeline** (Extract, Transform, Load), die mit **Apache Airflow** und der **Astro CLI** realisiert wurde. Es ruft Echtzeit-Wetterdaten ab, bereitet sie auf und speichert sie in einer PostgreSQL-Datenbank.
+Ziel: Eine flache Tabelle (weather_data) mit aktuellen Temperatur- und Windwerten.
 
-## 🚀 Projekt-Übersicht
+2. 🚖 Uber Data Pipeline (CSV-to-Star-Schema)
+Quelle: Lokale Datensätze (CSV) über Fahrten in New York City.
 
-Die Pipeline führt folgende Schritte vollautomatisch aus:
+Fokus: Komplexere Datenmodellierung (Transformation in ein Sternschema).
 
-1. **Extract**: Abruf aktueller Wetterdaten für Berlin über die **Open-Meteo API**.
-2. **Transform**: Aufbereitung der Rohdaten (Temperatur, Windgeschwindigkeit, Wettercode) mittels Python.
-3. **Load**: Speicherung der sauberen Daten in einer **PostgreSQL** Datenbank.
+Ziel: Aufteilung der Daten in eine Fakten-Tabelle (fact_table) und Dimension-Tabellen (rate_code_dim, datetime_dim) für optimierte SQL-Analysen.
 
----
+🛠️ Technologie-Stack
+Orchestrierung: Apache Airflow (Astronomer Runtime)
 
-## 🛠️ Technologie-Stack
+Sprache: Python (Pandas für Transformationen)
 
-* **Orchestrierung**: Apache Airflow (Astronomer Runtime)
-* **Sprache**: Python 3.x
-* **Datenbank**: PostgreSQL (Docker-Container)
-* **Monitoring**: DBeaver Lite (für SQL-Abfragen)
-* **Infrastruktur**: Docker & Astro CLI
+Datenbank: PostgreSQL (Docker-basiert)
 
----
+Monitoring: DBeaver Lite (für SQL-Validierung)
 
-## 📂 Projektinhalt
+Infrastruktur: Docker & Astro CLI
 
-Das Projekt wurde mit der Astronomer CLI generiert und angepasst:
+📂 Repository-Struktur
+dags/etlweather.py: Pipeline für den API-Abruf der Wetterdaten.
 
-* **`dags/etlweather.py`**: Enthält die DAG-Logik und die Task-Definitionen (`@task`).
-* **`requirements.txt`**: Installiert die notwendigen Provider für HTTP und Postgres.
-* **`docker-compose.yml`**: Konfiguration der lokalen Infrastruktur (Datenbank & Airflow-Services).
+dags/etluber.py: Pipeline für die Uber-Datenverarbeitung.
 
----
+dags/uber_data.csv: Der zugrunde liegende Datensatz für die Uber-Pipeline.
 
-## 💻 Lokale Ausführung & Nutzung
+requirements.txt: Enthält notwendige Bibliotheken wie pandas, sqlalchemy und psycopg2-binary.
 
-1. **Infrastruktur starten**:
-```bash
+💻 Inbetriebnahme
+Container starten:
+
+Bash
 astro dev start
+Dies startet die Airflow-Umgebung inklusive Webserver, Scheduler und der Postgres-Datenbank.
 
-```
+Airflow UI: Navigiere zu http://localhost:8080, um beide DAGs zu starten und zu überwachen.
 
+Datenanalyse (DBeaver):
 
-Dies startet fünf Docker-Container: Postgres (Metadaten-DB), Scheduler, API-Server (UI), Triggerer und den DAG-Prozessor.
-2. **Airflow UI**: Erreichbar unter `http://localhost:8080`.
-3. **Daten prüfen**: Die Ergebnisse können direkt in einem SQL-Tool wie **DBeaver** über `localhost:5432/postgres` (User: `postgres` / Pass: `postgres`) mit folgendem Befehl abgefragt werden:
-```sql
-SELECT * FROM weather_data;
+Wetter: SELECT * FROM weather_data;
 
-```
+Uber: SELECT * FROM fact_table f JOIN rate_code_dim r ON f.datetime_id = r.rate_code_id;
 
+💡 Gelernte Konzepte
+Lösen von Port-Konflikten in Docker-Umgebungen (z.B. Port 5432).
+
+Installation zusätzlicher Python-Pakete in laufenden Airflow-Containern über requirements.txt.
+
+Datenmodellierung nach dem Sternschema-Prinzip für Business Intelligence.
 
 
 ---
