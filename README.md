@@ -58,6 +58,8 @@ SELECT * FROM weather_data;
 
 
 ---
+<img width="1907" height="853" alt="image" src="https://github.com/user-attachments/assets/244cd098-bab1-43e2-8c1d-7c2086117000" />
+
 
 ## 👤 Kontakt & Autor
 
